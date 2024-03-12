@@ -4,7 +4,7 @@ import {Test} from "forge-std/Test.sol";
 
 contract MyContract is Test {
   mapping (address => uint) balances;
-  function prove_add_value(address recv, uint amt) public {
+  function prove_single_fail(address recv, uint amt) public {
     require(balances[recv] < 100);
     if (balances[recv] + amt > 100) {
       revert();

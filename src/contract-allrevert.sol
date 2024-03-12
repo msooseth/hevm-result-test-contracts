@@ -4,7 +4,7 @@ import {Test} from "forge-std/Test.sol";
 
 contract MyContract is Test {
   uint256 cntr;
-  function prove_x(uint256 val) public {
+  function prove_allrevert(uint256 val) public {
       if(val < 0) {
           unchecked {
             cntr = val;
