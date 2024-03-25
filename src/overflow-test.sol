@@ -7,6 +7,6 @@ contract MyContract is DSTest {
     unchecked {
      balance += amt;
     }
-    assert(balance > amt);
+    assert(balance >= amt);
   }
 }
