@@ -1,7 +1,7 @@
 pragma solidity ^0.8.19;
-import "ds-test/test.sol";
+//import "ds-test/test.sol";
 
-contract MyContract is DSTest {
+contract MyContract {
   uint balance;
   function prove_multiply(uint amt, uint amt2) public {
     require(amt != 1);
