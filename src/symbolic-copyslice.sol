@@ -11,6 +11,12 @@ contract CopySlice is DSTest {
           a:=mload(s)
       }
       // a = 5;
+    } else if (a >= 9) {
+      uint256 s2 = 2 + s;
+      assembly {
+          calldatacopy(0x5, s2, s)
+          a:=mload(s)
+      }
     } else {
       assembly {
           calldatacopy(0x2, 0x2, 5)
