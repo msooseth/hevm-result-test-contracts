@@ -2,7 +2,7 @@ pragma solidity ^0.8.19;
 
 import {Test} from "forge-std/Test.sol";
 
-contract MyContract is Test {
+contract TupleTest is Test {
   struct Pair {
       uint256 x;
       uint256 y;
