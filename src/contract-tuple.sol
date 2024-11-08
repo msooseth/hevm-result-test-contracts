@@ -8,10 +8,12 @@ contract MyContract is Test {
       uint256 y;
   }
 
-  function prove_pass(Pair memory a) public pure {
+  function prove_tuple_pass(Pair memory a) public pure {
     uint256 f = a.x;
     uint256 g = a.y;
-    a.x+=a.y;
-    assert(a.x == f + g);
+    unchecked {
+      a.x+=a.y;
+      assertTrue(a.x == f + g);
+    }
   }
 }
