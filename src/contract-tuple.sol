@@ -13,7 +13,7 @@ contract TupleTest is Test {
     uint256 g = a.y;
     unchecked {
       a.x+=a.y;
-      assertTrue(a.x == f + g);
+      assertTrue(a.x == (f + g));
     }
   }
 }
