@@ -57,7 +57,7 @@ contract MiniVatTest is DSTest {
         vat.init();
     }
 
-    function prove_invariant_symb(int256 frob, int256 fold) public {
+    function invariant_symb(int256 frob, int256 fold) public {
         vat.frob(frob);
         vat.fold(fold);
         vat.init();
@@ -67,6 +67,6 @@ contract MiniVatTest is DSTest {
     }
 
     function prove_invariant_fixed() public {
-        prove_invariant_symb(10 ** 18, -10 ** 27);
+        invariant_symb(10 ** 18, -10 ** 27);
     }
 }
