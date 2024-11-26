@@ -25,4 +25,19 @@ contract WarningTest is Test {
   function prove_error(uint a, uint b) public {
     assertTrue(a+b < 200);
   }
+  function prove_neq_err(uint a, uint b, uint c) public {
+    require(a != 0);
+    require(b != 0);
+    assertNotEq(a+b, a+b+c);
+  }
+  function prove_eq_err(uint a, uint b, uint c) public {
+    require(a != 0);
+    require(b != 0);
+    assertEq(a+b, a+b+c);
+  }
+  function prove_gt_err(uint a, uint b, uint c) public {
+    require(a != 0);
+    require(b != 0);
+    assertGt(a+b, a+b+c);
+  }
 }
