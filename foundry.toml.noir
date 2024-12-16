@@ -3,6 +3,5 @@ src = "src"
 out = "out"
 libs = ["lib"]
 ast = true
-# via_ir = true  # Enable the via-ir pipeline
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
