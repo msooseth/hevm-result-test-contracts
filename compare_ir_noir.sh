@@ -1,3 +1,5 @@
+rm -f with*
+
 cp foundry.toml.noir foundry.toml
 forge clean
 forge build --ast
