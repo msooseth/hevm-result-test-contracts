@@ -1,8 +1,8 @@
 pragma solidity ^0.8.19;
 
-import "ds-test/test.sol";
+import {Test} from "forge-std/Test.sol";
 
-contract CopySlice is DSTest {
+contract CopySlice is Test {
   function prove_copyslice(uint256 a, uint256 s) external pure returns (uint) {
     require(a < 10);
     if (a >= 8) {

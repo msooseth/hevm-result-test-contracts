@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
-import "ds-test/test.sol";
+import {Test} from "forge-std/Test.sol";
 
 contract Loopy {
     function loop(uint256 numTries) external returns(bool ok) {
@@ -14,7 +14,7 @@ contract Loopy {
     }
 }
 
-contract TestLoop is DSTest {
+contract TestLoop is Test {
     Loopy loopy;
 
     function setUp() public {

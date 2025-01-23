@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 pragma solidity ^0.8.17;
 
-import "ds-test/test.sol";
+import {Test} from "forge-std/Test.sol";
 
 contract MiniVat {
     uint256 public debt;
@@ -49,7 +49,7 @@ contract MiniVat {
     }
 }
 
-contract MiniVatTest is DSTest {
+contract MiniVatTest is Test {
     MiniVat public vat;
 
     constructor() {
