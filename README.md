@@ -2,14 +2,20 @@
 
 These help test how hevm pretty-prints messages to users
 
-Gotta run with:
+Example use:
+```plain
+git clone https://github.com/ethereum/hevm/
+cd hevm
+git clone https://github.com/msooseth/hevm-result-test-contracts
+cd hevm-result-test-contracts
+forge build --ast
+cd ..
+cabal run exe:hevm -- test --root "hevm-result-test-contracts"
 ```
-cabal run exe:hevm -- test --root tmp --max-iterations 6                                                
-```
-Something along the lines of:
 
-```
-$ cabal run exe:hevm -- test --root tmp 
+You should be getting something like:
+
+```plain
 Running 1 test(s) for src/contract-allrevert.sol:MyContract
 Exploring contract
 Explored contract (8 branches)
