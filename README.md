@@ -8,6 +8,8 @@ git clone https://github.com/ethereum/hevm/
 cd hevm
 git clone https://github.com/msooseth/hevm-result-test-contracts
 cd hevm-result-test-contracts
+git submodule init
+git submodule update
 forge build --ast
 cd ..
 cabal run exe:hevm -- test --root "hevm-result-test-contracts"
