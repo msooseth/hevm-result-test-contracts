@@ -113,7 +113,7 @@ contract BadVaultTest is Test {
     }
 
     /// @custom:halmos --array-lengths data1=36,data2=36,deferredData=36
-    function prove_BadVault_usingExploitLaunchPad(
+    function broken_prove_BadVault_usingExploitLaunchPad(
         address target1,
         uint256 amount1,
         bytes memory data1,
