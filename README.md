@@ -6,6 +6,7 @@ Example use:
 ```plain
 git clone https://github.com/ethereum/hevm/
 cd hevm
+nix develop .
 git clone https://github.com/msooseth/hevm-result-test-contracts
 cd hevm-result-test-contracts
 git submodule init
