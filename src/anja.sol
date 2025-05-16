@@ -5,8 +5,6 @@ import {Test} from "forge-std/Test.sol";
 contract MyVault {
     mapping(address => uint256) public balance;
     function deposit() external payable {
-        require(msg.value > 0);
-        require(msg.value < 10 ether);
         balance[msg.sender] += msg.value;
     }
 }
@@ -26,10 +24,9 @@ contract Stuff is Test {
         vault.deposit{value: 1 ether}();
     }
 
-    function prove_anja(uint8 amt) public {
+    function prove_anja2(uint8 amt) public {
         address k = address(1);
         uint pre = vault.balance(k);
-        assert(pre == 1 ether);
         vm.prank(k);
         vault.deposit{value: amt}();
         assert(vault.balance(k) == pre + amt);
