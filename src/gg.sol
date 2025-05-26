@@ -5,16 +5,15 @@ contract ERC20 {
 }
 
 contract TEST is Test{
-  address[] tokens;
-  address any = address(0x1234);
-  mapping(address => uint256) balances;
+  address token;
+  address myaddr;
 
   function setUp() public{
-    tokens.push(address(new ERC20()));
+    token = address(new ERC20());
   }
 
-  function prove_gggg(address target) public {
-    balances[target] = any.balance;
-    ERC20(address(tokens[0])).f();
+  function prove_gggghhh(address target) public {
+    myaddr = target;
+    ERC20(address(token)).f();
   }
 }
