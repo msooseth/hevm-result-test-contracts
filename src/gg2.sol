@@ -1,7 +1,10 @@
 import {Test} from "forge-std/Test.sol";
 
 contract ERC20 {
-  function f() public view { }
+  address any;
+  function f() public { 
+    any = msg.sender;
+  }
 }
 
 contract TEST is Test{
@@ -15,6 +18,6 @@ contract TEST is Test{
 
   function prove_ggggKKK(address target) public {
     balances[target] = any.balance;
-    ERC20(address(tokens[0])).f(); 
+    address(tokens[0]).delegatecall(abi.encodeWithSignature("f()"));
   }
 }
