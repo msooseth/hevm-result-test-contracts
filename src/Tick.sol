@@ -19,7 +19,7 @@ contract TickTreeSearchEchidnaTest {
     toggleTick(4944464);
     toggleTick(4370001);
     toggleTick(4370000);
-    //prove_NextInitializedTickInvariants(-6829959);
+    // prove_NextInitializedTickInvariants(-4055359);
   }
 
   // returns whether the given tick is initialized
@@ -64,6 +64,7 @@ contract TickTreeSearchEchidnaTest {
   }
 
   function prove_NextInitializedTickInvariants(int24 tick) public view {
+    // require(tick == -4055359);
     unchecked {
       if (tick < MIN_TICK) tick = MIN_TICK;
       if (tick >= MAX_TICK) tick = MAX_TICK;
