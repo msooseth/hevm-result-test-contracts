@@ -1,9 +1,9 @@
 pragma solidity ^0.8.19;
-//import "ds-test/test.sol";
+import {Test} from "forge-std/Test.sol";
 
-contract MyContract {
+contract MyContractOverflow is Test {
   uint balance = 100;
-  function test_overflow(uint amt) public {
+  function prove_overflow(uint amt) public {
     unchecked {
      balance += amt;
     }
