@@ -1,5 +1,3 @@
-pragma solidity 0.8.20;
-
 contract TickTreeSearchEchidnaTest {
   bool public IS_TEST = true;
   int24 internal constant MIN_TICK = -887272;

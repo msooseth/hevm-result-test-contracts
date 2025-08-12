@@ -113,7 +113,7 @@ contract BadVaultTest is Test {
     }
 
     /// @custom:halmos --array-lengths data1=36,data2=36,deferredData=36
-    function broken_prove_BadVault_usingExploitLaunchPad(
+    function prove_BadVault_usingExploitLaunchPad(
         address target1,
         uint256 amount1,
         bytes memory data1,
@@ -175,7 +175,7 @@ contract BadVaultTest is Test {
     //   withdraw 0x5f4E4CcFF0A2553b2BDE30e1fC8531B287db9087 1000000000000000000
     //   attacker final balance 3000000000000000000
     function test_BadVault_solution() public {
-        broken_prove_BadVault_usingExploitLaunchPad(
+        prove_BadVault_usingExploitLaunchPad(
             // 1st call
             address(vault),
             1 ether,

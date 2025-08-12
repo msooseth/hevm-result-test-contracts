@@ -1,6 +1,7 @@
+import {Test} from "forge-std/Test.sol";
 
-contract TickTreeSearchEchidnaTest {
-  bool public IS_TEST = true;
+contract TickTreeSearchEchidnaTest is Test {
+  // bool public IS_TEST = true;
   int24 internal constant MIN_TICK = -887272;
   int24 internal constant MAX_TICK = -MIN_TICK;
 
@@ -14,11 +15,10 @@ contract TickTreeSearchEchidnaTest {
   int24[] initedTicks;
   mapping(int24 => uint256) initedTicksIndexes;
 
-  function setUp() public {
+  constructor() public {
     toggleTick(4944464);
     toggleTick(4370001);
     toggleTick(4370000);
-    //prove_NextInitializedTickInvariants(-6829959);
   }
 
   // returns whether the given tick is initialized
@@ -62,13 +62,29 @@ contract TickTreeSearchEchidnaTest {
     }
   }
 
-  function prove_NextInitializedTickInvariants(int24 tick) public view {
+  function _findNextTickInArray(int24 start) private view returns (int24 num, bool found) {
+    uint256 length = initedTicks.length;
+    if (length == 0) return (MAX_TICK, false);
+    num = MAX_TICK;
     unchecked {
-      if (tick < MIN_TICK) tick = MIN_TICK;
-      if (tick >= MAX_TICK) tick = MAX_TICK;
-
+      for (uint256 i; i < length; ++i) {
+        int24 tick = initedTicks[i];
+        if (tick > start) {
+          if (tick <= num) {
+            num = tick;
+            found = true;
+          }
+        }
+      }
+    }
+  }
+  function prove_NextInitializedTickInvariants(int24 tick) public view {
+    tick = MIN_TICK;
+    unchecked {
       int24 next = tickBitmap.getNextTick(tickSecondLayerBitmap, tickTreeRoot, tick);
-      assert((next - tick) <= 2 * MAX_TICK);
+      // all the ticks between the input tick and the next tick should be uninitialized
+      (, bool found) = _findNextTickInArray(tick);
+      assert(_isInitialized(next) == found);
     }
   }
 }
