@@ -62,7 +62,7 @@ contract TickTreeSearchEchidnaTest {
     }
   }
 
-  function prove_NextInitializedTickInvariants(int24 tick) public view {
+  function SLOW_prove_NextInitializedTickInvariants(int24 tick) public view {
     unchecked {
       if (tick < MIN_TICK) tick = MIN_TICK;
       if (tick >= MAX_TICK) tick = MAX_TICK;

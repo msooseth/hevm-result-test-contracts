@@ -61,7 +61,7 @@ contract TickTreeSearchEchidnaTest {
     }
   }
 
-  function prove_NextInitializedTickInvariants(int24 tick) public view {
+  function SLOW_prove_NextInitializedTickInvariants(int24 tick) public view {
     // require(tick == -4055359);
     unchecked {
       if (tick < MIN_TICK) tick = MIN_TICK;

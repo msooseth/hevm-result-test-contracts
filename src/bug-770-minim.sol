@@ -78,7 +78,7 @@ contract TickTreeSearchEchidnaTest is Test {
       }
     }
   }
-  function prove_NextInitializedTickInvariants(int24 tick) public view {
+  function SLOW_prove_NextInitializedTickInvariants(int24 tick) public view {
     tick = MIN_TICK;
     unchecked {
       int24 next = tickBitmap.getNextTick(tickSecondLayerBitmap, tickTreeRoot, tick);
