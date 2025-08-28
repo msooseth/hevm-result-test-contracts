@@ -54,7 +54,7 @@ contract BancorExploit is Test {
 
 
     function test_attack_symbolic(uint256 _symbolicAmount) public {
-        XBPToken.balanceOf(victim);
+        // XBPToken.balanceOf(victim);
         uint256 balBefore = XBPToken.balanceOf(attacker);
 
         // vm.prank(address(this));
