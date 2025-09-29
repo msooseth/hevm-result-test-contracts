@@ -9,7 +9,7 @@ contract C {
 }
 contract T is Test {
   C c = new C();
-  function prove_only_deployed_const(address x) pure public {
+  function prove_only_deployed_force_addr(address x) pure public {
     uint256 y = C(x).f();
     assert(y != 42);
   }
