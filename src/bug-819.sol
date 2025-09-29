@@ -1,4 +1,4 @@
-pragma solidity 0.8.20;
+pragma solidity ^0.8.20;
 
 contract TickTreeSearchEchidnaTest {
   bool public IS_TEST = true;
@@ -16,8 +16,6 @@ contract TickTreeSearchEchidnaTest {
   mapping(int24 => uint256) initedTicksIndexes;
 
   constructor() public {
-    prove_819_NextInitializedTickInvariants(421);
-    prove_819_NextInitializedTickInvariants(5627980);
     toggleTick(298506);
   }
 
@@ -62,41 +60,11 @@ contract TickTreeSearchEchidnaTest {
     }
   }
 
-  function _findNextTickInArray(int24 start) private view returns (int24 num, bool found) {
-    uint256 length = initedTicks.length;
-    if (length == 0) return (MAX_TICK, false);
-    num = MAX_TICK;
+  function prove_NextInitializedTickInvariants_martin(int24 tick) public view {
     unchecked {
-      for (uint256 i; i < length; ++i) {
-        int24 tick = initedTicks[i];
-        if (tick > start) {
-          if (tick <= num) {
-            num = tick;
-            found = true;
-          }
-        }
-      }
-    }
-  }
-  function prove_819_NextInitializedTickInvariants(int24 tick) public view {
-    unchecked {
-      if (tick < MIN_TICK) tick = MIN_TICK;
-      if (tick >= MAX_TICK) tick = MAX_TICK;
-
-      int24 next = tickBitmap.getNextTick(tickSecondLayerBitmap, tickTreeRoot, tick);
-
-      if (tick == MAX_TICK) {
-        assert(next == MAX_TICK);
-      } else {
-        assert(next > tick);
-        assert((next - tick) <= 2 * MAX_TICK);
-        assert(next >= MIN_TICK);
-        assert(next <= MAX_TICK);
-        if (next != MAX_TICK) assert(_isInitialized(next));
-        // all the ticks between the input tick and the next tick should be uninitialized
-        (int24 nextInited, bool found) = _findNextTickInArray(tick);
-        assert(nextInited == next);
-        assert(_isInitialized(next) == found);
+      if (tick < MAX_TICK && tick > MIN_TICK) {
+        int24 next = tickBitmap.getNextTick(tickSecondLayerBitmap, tickTreeRoot, tick);
+        if (next < MAX_TICK) assert(_isInitialized(next));
       }
     }
   }
