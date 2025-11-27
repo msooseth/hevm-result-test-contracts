@@ -1,4 +1,4 @@
-contract C917 {
+contract C {
 	bool public IS_TEST = true;
 	uint256 state;
 	function prop() public {
