@@ -13,7 +13,7 @@ contract Counter {
 contract CounterSymTest is Test {
     Counter public counter;
 
-    constructor() public {
+    constructor() {
         counter = new Counter();
     }
 
