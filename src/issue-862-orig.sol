@@ -1,26 +1,26 @@
 pragma solidity ^0.8.13;
+import "forge-std/Test.sol";
 
 contract Counter {
     uint256 public number;
 
     function increment() public {
-        unchecked {
+      unchecked {
         number++;
-        }
+      }
     }
 }
 
-contract CounterSymTest {
-    bool public IS_TEST = true;
+contract CounterSymTest is Test {
     Counter public counter;
 
-    constructor() {
+    function setUp () public {
         counter = new Counter();
     }
 
     function prove_isIncrementFeasible() public {
-        require(counter.number() != 2);
+        vm.assume(counter.number() != 2);
         counter.increment();
-        assert(!(counter.number() == 2));
+        assertTrue(!(counter.number() == 2), "number is 2");
     }
 }
