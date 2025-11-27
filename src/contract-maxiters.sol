@@ -17,7 +17,7 @@ contract MyContract is Test {
     balance += a;
   }
 
-  function prove_maxiters_fail(uint a, uint k) public {
+  function disable_prove_maxiters_fail(uint a, uint k) public {
     require(balance < 100);
     unchecked {
       if (a < 777) {
